@@ -104,12 +104,12 @@ const McpServerRow = ({ server }: { server: ServerInfo }) => {
   );
 };
 
-const ServerTools = ({ server }: { server: ServerInfo }) => {
+const MCPsTools = ({ server }: { server: ServerInfo }) => {
   const { tools, isLoading } = useMCPServerTools(server);
   const toolsCount = Object.keys(tools || {}).length;
 
   if (isLoading) {
-    return <Skeleton className="h-4 w-24" />;
+    return null;
   }
 
   return (
@@ -126,14 +126,12 @@ const MCPs = () => {
 
   const mcpServers = servers ?? [];
 
-  console.log('MCP Servers:', mcpServers);
-
   const mcpServerListItems = mcpServers.map(server => ({
     id: server.id,
     name: server.name,
     to: `/mcps/${server.id}`,
     description: `${effectiveBaseUrl}/api/mcp/${server.id}/sse`,
-    columns: [<ServerTools key={server.id} server={server} />],
+    columns: [<MCPsTools key={server.id} server={server} />],
   }));
 
   const mcpServerListColumns = [{ key: 'tools', label: 'Tools' }];

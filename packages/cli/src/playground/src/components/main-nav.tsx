@@ -10,12 +10,8 @@ import {
 import { BookIcon, GlobeIcon, NetworkIcon } from 'lucide-react';
 import { Link, useLocation } from 'react-router';
 
-type MainNavProps = {};
-
 export function MainNav() {
   const currentLocation = useLocation();
-
-  console.log({ currentLocation });
 
   const items: AppSidebarSection[] = [
     [
