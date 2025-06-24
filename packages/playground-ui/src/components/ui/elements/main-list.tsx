@@ -29,12 +29,22 @@ type MainListProps = {
   linkComponent?: any;
   emptyStateFor?: 'networks' | 'agents' | 'mcpServers' | 'workflows' | 'tools';
   isLoading?: boolean;
+  withCollapsible?: boolean;
 };
 
 const DEFAULT_COLUMN_MIN_WIDTH = '10rem';
 const DEFAULT_COLUMN_MAX_WIDTH = '15rem';
 
-export function MainList({ className, style, items, columns, linkComponent, emptyStateFor, isLoading }: MainListProps) {
+export function MainList({
+  className,
+  style,
+  items,
+  columns,
+  linkComponent,
+  emptyStateFor,
+  isLoading,
+  withCollapsible,
+}: MainListProps) {
   const eligibleEmptyStateForValue = Object.keys(predefinedEmptyListContent);
   const emptyStateDefined = emptyStateFor && eligibleEmptyStateForValue.includes(emptyStateFor);
 
@@ -52,10 +62,10 @@ export function MainList({ className, style, items, columns, linkComponent, empt
 
   return (
     <ul className={cn(``, className)} style={style}>
-      <MainListHeader columns={columns} items={items} />
+      <MainListHeader columns={columns} items={items} withCollapsible={withCollapsible} />
 
       {items?.map(item => {
-        const { id, name, to, description, columns: itemColumns, collapsible } = item;
+        const { id, name, to } = item;
 
         if (!id || !name || !to) {
           console.warn('Item is missing required properties:', item);
@@ -131,9 +141,7 @@ type MainListHeaderProps = {
   withCollapsible?: boolean;
 };
 
-export function MainListHeader({ columns, className, style, withCollapsible }: MainListHeaderProps) {
-  console.log({ columns });
-
+export function MainListHeader({ columns, items, className, style, withCollapsible }: MainListHeaderProps) {
   return (
     <li className="items-center h-table-header border-b-sm border-border1 flex text-icon3 text-[11px] font-normal uppercase px-5">
       <span>Name</span>

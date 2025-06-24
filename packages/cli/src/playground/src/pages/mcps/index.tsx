@@ -104,6 +104,21 @@ const McpServerRow = ({ server }: { server: ServerInfo }) => {
   );
 };
 
+const ServerTools = ({ server }: { server: ServerInfo }) => {
+  const { tools, isLoading } = useMCPServerTools(server);
+  const toolsCount = Object.keys(tools || {}).length;
+
+  if (isLoading) {
+    return <Skeleton className="h-4 w-24" />;
+  }
+
+  return (
+    <>
+      <ToolsIcon /> {toolsCount} tool{toolsCount === 1 ? '' : 's'}
+    </>
+  );
+};
+
 const MCPs = () => {
   const { servers, isLoading } = useMCPServers();
   const newUIEnabled = useNewUI();
@@ -118,14 +133,10 @@ const MCPs = () => {
     name: server.name,
     to: `/mcps/${server.id}`,
     description: `${effectiveBaseUrl}/api/mcp/${server.id}/sse`,
-    columns: [
-      <>
-        <AgentIcon />
-      </>,
-    ],
+    columns: [<ServerTools key={server.id} server={server} />],
   }));
 
-  const mcpServerListColumns = [{ key: 'actions', label: 'Actions', minWidth: '10rem', maxWidth: '15rem' }];
+  const mcpServerListColumns = [{ key: 'tools', label: 'Tools' }];
 
   return newUIEnabled ? (
     <MainLayout>

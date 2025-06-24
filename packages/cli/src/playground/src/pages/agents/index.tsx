@@ -29,8 +29,6 @@ function Agents() {
   const { agents, isLoading } = useAgents();
   const newUIEnabled = useNewUI();
 
-  console.log('Agents:', agents);
-
   const agentListData = Object.entries(agents).map(([key, agent]) => ({
     id: key,
     name: agent.name,

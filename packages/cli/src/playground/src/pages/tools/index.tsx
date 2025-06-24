@@ -32,7 +32,6 @@ import { SearchIcon } from 'lucide-react';
 import { useTools } from '@/hooks/use-all-tools';
 import { Tool } from '@mastra/core/tools';
 import { useNewUI } from '@/hooks/use-new-ui';
-import { min } from 'date-fns';
 
 interface ToolWithAgents {
   id: string;
@@ -146,7 +145,13 @@ const ToolsInner = ({ toolsWithAgents }: { toolsWithAgents: ToolWithAgents[] }) 
         <MainHeaderTitle>Tools</MainHeaderTitle>
       </MainHeader>
       <MainContent>
-        <MainList items={toolListItems} linkComponent={Link} columns={agentListColumns} emptyStateFor="tools" />
+        <MainList
+          items={toolListItems}
+          linkComponent={Link}
+          columns={agentListColumns}
+          emptyStateFor="tools"
+          withCollapsible={true}
+        />
       </MainContent>
     </MainLayout>
   ) : (

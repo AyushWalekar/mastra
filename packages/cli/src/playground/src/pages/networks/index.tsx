@@ -26,8 +26,6 @@ function Networks() {
   const { networks, isLoading } = useNetworks();
   const newUIEnabled = useNewUI();
 
-  console.log('Networks:', networks);
-
   const networkListColumns = [
     { key: 'agents', label: 'Agents', minWidth: '6rem' },
     { key: 'routingModel', label: 'Routing Model' },

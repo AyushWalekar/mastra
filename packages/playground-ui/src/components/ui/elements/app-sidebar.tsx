@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { ArrowLeftFromLine } from 'lucide-react';
+import { ArrowLeftFromLine, PanelRightIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 export type AppSidebarItem = {
@@ -116,7 +116,7 @@ export function AppSidebar({
           aria-label="Toggle sidebar"
         >
           {!isCollapsed && <>Collapse</>}
-          <ArrowLeftFromLine
+          <PanelRightIcon
             className={cn({
               'rotate-180': isCollapsed,
             })}
