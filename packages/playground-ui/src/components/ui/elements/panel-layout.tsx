@@ -8,7 +8,7 @@ type PanelLayoutProps = {
 
 export function PanelLayout({ children, className, style }: PanelLayoutProps) {
   return (
-    <div className={cn('grid grid-rows-[auto_1fr] p-[22px] h-full overflow-y-auto', className)} style={style}>
+    <div className={cn('grid grid-rows-[auto_1fr] p-[22px] h-ful overflow-y-auto', className)} style={style}>
       {children}
     </div>
   );

@@ -9,3 +9,4 @@ export * from './panel-section';
 export * from './panel-layout';
 export * from './panel-content';
 export * from './panel-key-value-list';
+export * from './alert-dialog';

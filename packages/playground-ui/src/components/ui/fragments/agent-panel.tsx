@@ -1,6 +1,5 @@
 import { WorkflowIcon } from 'lucide-react';
 import { AgentIcon, MemoryIcon, ToolsIcon } from '@/ds/icons';
-import { cn } from '@/lib/utils';
 import { Txt } from '@/ds/components/Txt';
 import { PanelSection, PanelBadges, PanelLayout, PanelHeader, PanelContent } from '../elements';
 
