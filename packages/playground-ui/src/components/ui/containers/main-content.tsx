@@ -3,63 +3,33 @@ import { cn } from '@/lib/utils';
 export function MainContent({
   children,
   className,
-  isCentered = false,
-  isDivided = false,
-  hasLeftServiceColumn = false,
+  //  isCentered = false,
+  //  isDivided = false,
+  //  hasLeftServiceColumn = false,
   style,
-  width = 'narrow',
+  //  width = 'narrow',
   variant = 'default',
 }: {
   children: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
-  // content is centered in the middle of the page e.g. for empty state
-  isCentered?: boolean;
-  // content is split into two columns equal width columns
-  isDivided?: boolean;
-  // used when the left column is a service column (e.g. agent history nav)
-  hasLeftServiceColumn?: boolean;
-  width?: 'narrow' | 'full';
-  variant?: 'default' | 'twoColumns' | 'list' | 'empty';
+  variant?: 'default' | 'forAgent' | 'forAgentWithHistory';
 }) {
-  const isNarrow = width === 'narrow';
-
-  if (variant === 'list') {
-    return (
-      <div className={cn(`grid overflow-y-scroll h-full pb-[5rem]`, className)} style={{ ...style }}>
-        <div
-          className="h-auto w-full max-w-[60rem] mx-auto px-7"
-          style={{
-            ...style,
-            // border: '2px solid blue',
-          }}
-        >
-          {children}
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div
       className={cn(
-        `grid overflow-y-auto h-full`,
-        `overflow-x-auto min-w-[min-content]`,
-        // {
-        //   'items-start content-start': !isCentered && !isDivided && !hasLeftServiceColumn,
-        //   'grid place-items-center': isCentered,
-        //   'grid-cols-[1fr_1fr]': isDivided && !hasLeftServiceColumn,
-        //   'grid-cols-[auto_1fr_1fr]': isDivided && hasLeftServiceColumn,
-        //   'grid-cols-[auto_1fr]': !isDivided && hasLeftServiceColumn,
-        //   '': variant === 'default',
-        //   'grid-cols-[1fr_1fr] grid-rows-[1fr]': variant === 'twoColumns',
-        //   'content-center justify-items-center pb-10': variant === 'empty',
-        // },
+        {
+          'grid overflow-y-auto h-full overflow-x-auto min-w-[min-content]': variant !== 'default',
+          'grid grid-cols-[1fr_1fr]': variant === 'forAgent',
+          '[&>:nth-child(1)]:bg-black [&>:nth-child(1)]:py-6': variant === 'forAgent',
+          'grid grid-cols-[auto_1fr_1fr]': variant === 'forAgentWithHistory',
+          '[&>:nth-child(2)]:bg-black [&>:nth-child(2)]:py-6': variant === 'forAgentWithHistory',
+        },
         className,
       )}
       style={{
         ...style,
-        //  border: '3px dashed red'
+        // border: '2px solid red',
       }}
     >
       {children}

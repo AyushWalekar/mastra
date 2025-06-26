@@ -1,5 +1,4 @@
 import { Txt } from '@/ds/components/Txt';
-import { Button } from '@/ds/components/Button';
 
 import { ExternalLinkIcon } from 'lucide-react';
 import { Icon } from '@/ds/icons';

@@ -5,15 +5,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { useAgent } from '@/hooks/use-agents';
 
 import { AgentHeader } from './agent-header';
-import {
-  HeaderTitle,
-  Header,
-  MainContentLayout,
-  MainLayout,
-  MainContent,
-  MainHeader,
-  MainNavbar,
-} from '@mastra/playground-ui';
+import { HeaderTitle, Header, MainContentLayout, MainLayout, MainHeader, MainNavbar } from '@mastra/playground-ui';
 import { useNewUI } from '@/hooks/use-new-ui';
 
 export const AgentLayout = ({ children }: { children: React.ReactNode }) => {
@@ -39,7 +31,7 @@ export const AgentLayout = ({ children }: { children: React.ReactNode }) => {
           ]}
         />
       </MainHeader>
-      <MainContent>{children}</MainContent>
+      {children}
     </MainLayout>
   ) : (
     <MainContentLayout>
