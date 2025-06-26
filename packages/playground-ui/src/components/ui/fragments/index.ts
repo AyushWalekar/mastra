@@ -5,3 +5,4 @@ export * from './provider-icons';
 export * from './runtime-context-info';
 export * from './runtime-context-editor';
 export * from './agent-panel';
+export * from './network-panel';

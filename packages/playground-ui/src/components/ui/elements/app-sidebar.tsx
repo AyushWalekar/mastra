@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { ArrowLeftFromLine, PanelRightIcon } from 'lucide-react';
+import { PanelRightIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 export type AppSidebarItem = {
@@ -61,7 +61,7 @@ export function AppSidebar({
             )}
           >
             {section.map((item, itemIdx) => {
-              const isActive = item.to ? currentPath === item.to : false;
+              const isActive = item.to ? currentPath?.startsWith(item.to) : false;
 
               return (
                 <li

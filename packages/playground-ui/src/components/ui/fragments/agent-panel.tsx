@@ -1,8 +1,8 @@
-import { InfoIcon, WorkflowIcon } from 'lucide-react';
-import { AgentIcon, Icon, MemoryIcon, ToolsIcon } from '@/ds/icons';
-import { Badge } from '@/ds/components/Badge/Badge';
+import { WorkflowIcon } from 'lucide-react';
+import { AgentIcon, MemoryIcon, ToolsIcon } from '@/ds/icons';
 import { cn } from '@/lib/utils';
 import { Txt } from '@/ds/components/Txt';
+import { PanelSection, PanelBadges, PanelLayout, PanelHeader, PanelContent } from '../elements';
 
 type AgentPanelProps = {
   className?: string;
@@ -43,12 +43,9 @@ export function AgentPanel({ agent, memory, className, style, Link }: AgentPanel
     .join('\n');
 
   return (
-    <div className="grid grid-rows-[auto_1fr]  p-[22px]">
-      <div className={cn('flex gap-2 text-[16px] items-center mb-[30px]', '[&>svg]:w-[20px] [&>svg]:h-[20px]')}>
-        <AgentIcon />
-        {agent?.name}
-      </div>
-      <div className="grid gap-[30px] content-start">
+    <PanelLayout>
+      <PanelHeader icon={<AgentIcon />} title={agent?.name} />
+      <PanelContent>
         <PanelSection title="Memory" href="https://mastra.ai/en/docs/agents/agent-memory">
           <PanelBadges badges={memoryBadges} />
         </PanelSection>
@@ -70,56 +67,7 @@ export function AgentPanel({ agent, memory, className, style, Link }: AgentPanel
             {formattedInstructions}
           </Txt>
         </PanelSection>
-      </div>
-    </div>
-  );
-}
-
-type PanelSectionProps = {
-  title?: string;
-  children?: React.ReactNode;
-  className?: string;
-  style?: React.CSSProperties;
-  href?: string;
-};
-
-export function PanelSection({ children, title, href }: PanelSectionProps) {
-  return (
-    <div className="grid gap-[10px]">
-      <div className="flex items-center gap-2">
-        <h3 className="text-[12px] text-icon3">{title}</h3>
-        {href && (
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="[&>svg]:text-icon3 [&>svg]:w-[12px] [&>svg]:h-[12px]"
-          >
-            <InfoIcon />
-          </a>
-        )}
-      </div>
-      {children}
-    </div>
-  );
-}
-
-type PanelBadgesProps = {
-  badges?: { name: string; icon?: React.ReactNode }[];
-  className?: string;
-  style?: React.CSSProperties;
-};
-
-export function PanelBadges({ badges }: PanelBadgesProps) {
-  return (
-    <div className="flex flex-wrap gap-2 text-[12px] text-icon3">
-      {badges && badges.length > 0
-        ? badges?.map(badge => (
-            <Badge key={badge.name} icon={badge.icon}>
-              {badge.name}
-            </Badge>
-          ))
-        : 'Not defined'}
-    </div>
+      </PanelContent>
+    </PanelLayout>
   );
 }
