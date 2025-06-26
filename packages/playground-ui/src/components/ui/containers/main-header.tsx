@@ -11,7 +11,10 @@ export function MainHeader({
 }) {
   return (
     <header
-      className={cn('flex w-full items-center border-b border-border1 h-[40px] px-[20px] py-[6px] gap-[18px]', {})}
+      className={cn(
+        'flex w-full items-center border-b border-border1 h-[2.5rem] px-[2.5rem] py-[0.375rem] gap-[1.125rem]',
+        {},
+      )}
       style={{
         ...style,
         //  border: '2px solid red'

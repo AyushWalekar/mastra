@@ -80,10 +80,10 @@ export function AppSidebar({
                     <LinkComponent to={item.to}>
                       {item.icon}
                       {!isCollapsed && (
-                        <>
+                        <div className="min-w-[8rem]">
                           {item.label}
                           {item.badge}
-                        </>
+                        </div>
                       )}
                     </LinkComponent>
                   )}

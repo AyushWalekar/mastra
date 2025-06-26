@@ -112,9 +112,9 @@ export const MainListEmpty = ({
   const actions = content?.actions || customActions;
 
   return (
-    <div className={cn('flex w-[340px] flex-col items-center justify-center text-center', className)} style={style}>
+    <div className={cn('flex w-[22rem] flex-col items-center justify-center text-center', className)} style={style}>
       <div className="h-auto [&>svg]:w-[126px]">{icon}</div>
-      <div className="text-icon6 pt-[34px] font-serif text-[1.75rem] font-semibold">{title}</div>
+      <div className="text-icon6 pt-[2.125rem] font-serif text-[1.75rem] font-semibold">{title}</div>
       <Txt variant="ui-lg" className="text-icon3">
         {description}
       </Txt>

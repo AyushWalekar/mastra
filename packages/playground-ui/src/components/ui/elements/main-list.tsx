@@ -91,11 +91,14 @@ function MainListLoading({ columns, items, className, style, withCollapsible }: 
     <ul className={cn(``, className)} style={style}>
       <MainListHeader columns={columns} items={items} />
       {Array.from({ length: 3 }).map((_, rowIdx) => (
-        <li key={rowIdx} className="grid px-5 min-h-[44px] items-center border-b-sm border-border1 hover:bg-surface3">
+        <li
+          key={rowIdx}
+          className="grid px-5 min-h-[2.75rem] items-center border-b-sm border-border1 hover:bg-surface3"
+        >
           <div className="flex gap-2 items-center w-full ">
             <div className="flex gap-2 items-center w-full">
               <div
-                className={cn('text-icon6 font-medium h-[12px] rounded-md w-[50%] bg-surface5 animate-pulse', {
+                className={cn('text-icon6 font-medium h-[0.75rem] rounded-md w-[50%] bg-surface5 animate-pulse', {
                   'w-[30%] opacity-80': rowIdx === 1,
                   'w-[40%] opacity-60': rowIdx === 2,
                 })}
@@ -107,7 +110,7 @@ function MainListLoading({ columns, items, className, style, withCollapsible }: 
                   {columns?.map(column => (
                     <div
                       className={cn(
-                        'text-icon6 font-medium h-[12px] rounded-md ',
+                        'text-icon6 font-medium h-[0.75rem] rounded-md ',
                         '[&>*]:flex [&>*]:items-center [&>*]:justify-start [&>*]:gap-1',
                       )}
                       style={{
@@ -116,10 +119,13 @@ function MainListLoading({ columns, items, className, style, withCollapsible }: 
                       }}
                     >
                       <div
-                        className={cn('text-icon6 font-medium rounded-md w-[30%] h-[12px] animate-pulse bg-surface5', {
-                          'w-[50%] opacity-80': rowIdx === 1,
-                          'w-[40%] opacity-60': rowIdx === 2,
-                        })}
+                        className={cn(
+                          'text-icon6 font-medium rounded-md w-[30%] h-[0.75rem] animate-pulse bg-surface5',
+                          {
+                            'w-[50%] opacity-80': rowIdx === 1,
+                            'w-[40%] opacity-60': rowIdx === 2,
+                          },
+                        )}
                       ></div>
                     </div>
                   ))}
@@ -143,12 +149,12 @@ type MainListHeaderProps = {
 
 export function MainListHeader({ columns, items, className, style, withCollapsible }: MainListHeaderProps) {
   return (
-    <li className="items-center h-table-header border-b-sm border-border1 flex text-icon3 text-[11px] font-normal uppercase px-5">
+    <li className="items-center h-table-header border-b-sm border-border1 flex text-icon3 text-[0.6875rem] font-normal uppercase px-5">
       <span>Name</span>
       {columns && columns?.length > 0 && (
         <div
           className={cn('ml-auto flex gap-2 items-center', {
-            'pr-[35px]': withCollapsible,
+            'pr-[2.1875rem]': withCollapsible,
           })}
         >
           {columns?.map(column => {
@@ -181,14 +187,14 @@ export function MainListItem({ item, linkComponent, listColumns = [] }: MainList
   const [collapsed, setCollapsed] = useState(true);
 
   return (
-    <li key={item.id} className="grid px-5 min-h-[44px] items-center border-b-sm border-border1 hover:bg-surface3">
+    <li key={item.id} className="grid px-5 min-h-[2.75rem] items-center border-b-sm border-border1 hover:bg-surface3">
       <LinkComponent to={item.to} className="flex gap-2 items-center w-full ">
-        <div className="flex gap-2 items-center group [&>svg]:w-[20px] [&>svg]:h-[20px]">
+        <div className="flex gap-2 items-center group [&>svg]:w-[1.25rem] [&>svg]:h-[1.25rem]">
           {item.icon}
           <div className="py-1">
-            <span className="text-icon6 font-medium text-[12px]">{item.name}</span>
+            <span className="text-icon6 font-medium text-[0.75rem]">{item.name}</span>
             {item.description && (
-              <p className="truncate max-w-[80ch] text-icon3 text-[10px] pb-1 ">{item.description}</p>
+              <p className="truncate max-w-[80ch] text-icon3 text-[0.625rem] pb-1 ">{item.description}</p>
             )}
           </div>
         </div>
@@ -198,9 +204,9 @@ export function MainListItem({ item, linkComponent, listColumns = [] }: MainList
               {item.columns?.map((itemColumn, idx) => (
                 <div
                   className={cn(
-                    'flex justify-start items-center gap-1 text-[11px] text-left',
+                    'flex justify-start items-center gap-1 text-[0.6875rem] text-left',
                     '[&>*]:flex [&>*]:items-center [&>*]:justify-start [&>*]:gap-1',
-                    '[&_svg]:w-[12px] [&_svg]:h-[12px] [&_svg]:text-icon3',
+                    '[&_svg]:w-[0.75rem] [&_svg]:h-[0.75rem] [&_svg]:text-icon3',
                   )}
                   style={{
                     minWidth: listColumns[idx].minWidth || DEFAULT_COLUMN_MIN_WIDTH,
@@ -238,31 +244,4 @@ export function MainListItem({ item, linkComponent, listColumns = [] }: MainList
       )}
     </li>
   );
-}
-
-{
-  /* <li className="items-center h-table-header border-b-sm border-border1 flex text-icon3 text-[11px] font-normal uppercase px-5">
-        <span>Name</span>
-        {columns && columns?.length > 0 && (
-          <div
-            className={cn('ml-auto flex gap-2 items-center', {
-              'pr-[35px]': items && items.length > 0 && items[0].collapsible,
-            })}
-          >
-            {columns?.map(column => {
-              return (
-                <span
-                  className={cn(`flex text-left`)}
-                  style={{
-                    minWidth: column.minWidth || DEFAULT_COLUMN_MIN_WIDTH,
-                    maxWidth: column.maxWidth || DEFAULT_COLUMN_MAX_WIDTH,
-                  }}
-                >
-                  {column.label}
-                </span>
-              );
-            })}
-          </div>
-        )}
-      </li> */
 }

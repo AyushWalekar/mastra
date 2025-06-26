@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button';
 import { InfoIcon } from '@/ds/icons';
 
 type PanelSectionProps = {
@@ -6,9 +7,14 @@ type PanelSectionProps = {
   className?: string;
   style?: React.CSSProperties;
   href?: string;
+  action?: {
+    onAction: () => void;
+    label: string;
+    icon: React.ReactNode;
+  };
 };
 
-export function PanelSection({ children, title, href }: PanelSectionProps) {
+export function PanelSection({ children, title, href, action }: PanelSectionProps) {
   return (
     <div className="grid gap-[10px]">
       <div className="flex items-center gap-2">
@@ -22,6 +28,11 @@ export function PanelSection({ children, title, href }: PanelSectionProps) {
           >
             <InfoIcon />
           </a>
+        )}
+        {action && (
+          <Button onClick={action.onAction} className="ml-auto" variant={'ghost'} size="icon">
+            {action.icon}
+          </Button>
         )}
       </div>
       {children}

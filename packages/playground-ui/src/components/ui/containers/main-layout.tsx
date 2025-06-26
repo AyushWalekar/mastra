@@ -12,7 +12,7 @@ export function MainLayout({
   return (
     <main
       className={cn(
-        'bg-surface2 rounded-[6px] border border-border1 overflow-y-auto grid grid-rows-[auto_1fr]',
+        'bg-surface2 rounded-[0.375rem] border border-border1 overflow-y-auto grid grid-rows-[auto_1fr]',
         // hack to cover the PageLayout border instead of aligning with it
         'translate-x-[1px] translate-y-[1px]',
         className,
