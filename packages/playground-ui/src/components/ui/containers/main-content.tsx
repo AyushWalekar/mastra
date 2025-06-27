@@ -3,27 +3,31 @@ import { cn } from '@/lib/utils';
 export function MainContent({
   children,
   className,
-  //  isCentered = false,
-  //  isDivided = false,
-  //  hasLeftServiceColumn = false,
   style,
-  //  width = 'narrow',
   variant = 'default',
 }: {
   children: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
-  variant?: 'default' | 'forAgent' | 'forAgentWithHistory';
+  variant?: 'default' | 'forAgent' | 'forAgentWithHistory' | 'forTool' | 'forMcpsServer';
 }) {
   return (
     <div
       className={cn(
         {
+          // default
           'grid overflow-y-auto h-full overflow-x-auto min-w-[min-content]': variant !== 'default',
+          // agent-chat screen without history
           'grid grid-cols-[1fr_1fr]': variant === 'forAgent',
-          '[&>:nth-child(1)]:bg-black [&>:nth-child(1)]:py-6': variant === 'forAgent',
+          '[&>:nth-child(1)]:bg-black [&>:nth-child(1)]:py-6': variant === 'forAgent', // for clarity styles applied to the container child defined in a separate row
+          // agent-chat screen with history
           'grid grid-cols-[auto_1fr_1fr]': variant === 'forAgentWithHistory',
           '[&>:nth-child(2)]:bg-black [&>:nth-child(2)]:py-6': variant === 'forAgentWithHistory',
+          // tool screen
+          'grid grid-cols-[auto_1fr] relative': variant === 'forTool',
+          // MCPs server screen
+          'grid grid-cols-[2fr_1fr]': variant === 'forMcpsServer',
+          '[&>:nth-child(2)]:border-l [&>:nth-child(1)]:border-border1': variant === 'forMcpsServer',
         },
         className,
       )}

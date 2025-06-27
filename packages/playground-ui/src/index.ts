@@ -11,6 +11,7 @@ export * from './components/ui/containers';
 export * from './components/ui/fragments';
 export * from './components/ui/elements';
 export * from './components/threads';
+export * from './components/ui/tooltip';
 export * from './types';
 export * from './ds/components/Badge/index';
 export * from './ds/components/Button/index';

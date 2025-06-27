@@ -12,7 +12,7 @@ export function MainHeader({
   return (
     <header
       className={cn(
-        'flex w-full items-center border-b border-border1 h-[2.5rem] px-[2.5rem] py-[0.375rem] gap-[1.125rem]',
+        'flex w-full items-center border-b border-border1 h-[2.5rem] px-[1.25rem] py-[0.375rem] gap-[1.125rem]',
         {},
       )}
       style={{

@@ -10,3 +10,5 @@ export * from './panel-layout';
 export * from './panel-content';
 export * from './panel-key-value-list';
 export * from './alert-dialog';
+export * from './code-mirror-block';
+export * from './entry-list';

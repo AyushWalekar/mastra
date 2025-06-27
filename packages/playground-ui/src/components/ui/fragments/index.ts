@@ -7,3 +7,5 @@ export * from './runtime-context-editor';
 export * from './agent-panel';
 export * from './network-panel';
 export * from './agent-history';
+export * from './mcps-panel';
+export * from './mcps-sidebar';

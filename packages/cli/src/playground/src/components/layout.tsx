@@ -5,9 +5,9 @@ import { SidebarProvider } from './ui/sidebar';
 import { Toaster } from './ui/sonner';
 import { ThemeProvider } from './ui/theme-provider';
 import { useNewUI } from '@/hooks/use-new-ui';
-import { PageLayout, PageHeader, PageHeaderLogo, PageHeaderStars } from '@mastra/playground-ui';
+import { PageLayout, PageHeader, PageHeaderLogo, PageHeaderStars, TooltipProvider } from '@mastra/playground-ui';
 import { MainNav } from './main-nav';
-import { TooltipProvider } from './ui/tooltip';
+// import { TooltipProvider } from './ui/tooltip';
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
   const newUIEnabled = useNewUI();

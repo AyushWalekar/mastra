@@ -130,6 +130,7 @@ const MCPs = () => {
     id: server.id,
     name: server.name,
     to: `/mcps/${server.id}`,
+    icon: <McpServerIcon />,
     description: `${effectiveBaseUrl}/api/mcp/${server.id}/sse`,
     columns: [<MCPsTools key={server.id} server={server} />],
   }));
@@ -146,7 +147,7 @@ const MCPs = () => {
           items={mcpServerListItems}
           linkComponent={Link}
           columns={mcpServerListColumns}
-          emptyStateFor="networks"
+          emptyStateFor="mcpServers"
           isLoading={isLoading}
         />
       </MainContent>
